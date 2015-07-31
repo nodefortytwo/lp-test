@@ -1,0 +1,23 @@
+
+Simply run "php solution/process.php -h" to see the help file
+
+============================================
+
+php process.php [args]
+
+-h	Display this help
+-t	location of the taxonomies xml file (relative to your current location)
+-d	location of the destinations xml file (relative to your current location)
+-o	location of the output folder (relative to your current location)
+-f	ignore warnings and overwrite existing files
+
+============================================
+
+Built on PHP 5.6
+
+
+Tests can be run with PHPUnit, they are in the test directory.
+
+Sample command, from inside the solutions folder, would be:
+
+phpunit --bootstrap vendor/autoload.php tests/ParseTest

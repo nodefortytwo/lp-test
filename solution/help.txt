@@ -1,0 +1,8 @@
+php process.php [args]
+
+-h	Display this help
+-t	location of the taxonomies xml file
+-d	location of the destinations xml file
+-o	location of the output folder
+-f	ignore warnings and overwrite existing files
+

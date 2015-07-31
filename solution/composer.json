@@ -1,0 +1,14 @@
+{
+    "name": "rickburg/lp",
+    "description": "A simple command line app to process Lonely Planet dataset",
+    "authors": [
+        {
+            "name": "Rick Burgess",
+            "email": "nodefortytwo@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Lp\\": "src/"}
+    },
+    "require": {}
+}
