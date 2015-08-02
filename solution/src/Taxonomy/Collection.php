@@ -15,6 +15,11 @@ class Collection {
      * @param  string $path
      */
 	public function __construct($path){
+
+		if(!is_readable($path)){
+			throw new \Exception('Unable to read Taxonomy input file');
+		}
+
 		$this->path = $path;
 	}
 

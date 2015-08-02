@@ -11,7 +11,7 @@ class ParseTest extends PHPUnit_Framework_TestCase
 
     }
 
-    //check the total destination items found
+    //check the total destination items found, this also tests basic iterator behaviour
     public function testDestinationParse()
     {
         $destination_collection = new Lp\Destination\Collection(__DIR__.'/assets/destinations.xml');
@@ -23,26 +23,14 @@ class ParseTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(24, $total);
 
-    }
 
-
-    public function testUnwritableOutputDirectory(){
-        $taxonomy_collection = new Lp\Taxonomy\Collection(__DIR__.'/assets/taxonomy.xml');
-        $taxonomy_collection->parseXml();
-        $destination_collection = new Lp\Destination\Collection(__DIR__.'/assets/destinations.xml');
-
-        $template = new Lp\Render\Template('template.html', $taxonomy_collection);
-        
-        $dest = current($destination_collection);
-
-        try {
-            $template->output($dest, 'random/directory', false);
-        }
-        catch (Exception $expected) {
-            return;
+        $total = 0;
+        foreach($destination_collection as $dest){
+            $total++;
         }
 
-        $this->fail('An expected exception has not been raised.');
+        $this->assertEquals(24, $total);
+
     }
 
 }

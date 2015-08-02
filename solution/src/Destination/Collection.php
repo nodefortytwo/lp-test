@@ -19,6 +19,11 @@ class Collection implements \Iterator{
         $this->position = $starting_postion;
         $this->starting_postion = $starting_postion;
 
+        if(!is_readable($path)){
+            throw new \Exception('Unable to read Destination input file');
+        }
+
+
         $this->file = new SplFileObject($this->path);
         $this->file->seek($starting_postion);
 
@@ -27,8 +32,7 @@ class Collection implements \Iterator{
     public function getNextDestination(){
     	$destination = '';
     	$found = false;
-    	$this->file->seek($this->position);
-    	
+
 
     	while (!$this->file->eof()) {
 		    $line = trim($this->file->fgets());
@@ -66,6 +70,8 @@ class Collection implements \Iterator{
     //Standard PHP iterator methods
     function rewind() {
         $this->position = $this->starting_postion;
+        $this->file->seek($this->position);
+        unset($this->current);
     }
 
     function current() {
